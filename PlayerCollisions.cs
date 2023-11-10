@@ -25,7 +25,7 @@ public class PlayerCollisions : MonoBehaviour
     
     /*NOTE: For detecting collisions, multiple colliders can be used. For example, the player can be helped by having a smaller hitbox for registering enemy collisions, but a larger hitbox
      *for detecting collisions with pick-ups. Additionally, a different collider can also be used with collisions with the ground. Here, a single collider has been used for now.*/
-    void OnTriggerStay2D(Collider2D col) //This needs to be "Stay" instead of "Enter", since we won't be damaged if we enter the enemy collision while we're invincible
+    void OnTriggerStay2D(Collider2D col) //This needs to be "Stay" instead of "Enter", since otherwise we won't be damaged if we walk inside the enemy while we're invincible
     {        
         switch (col.gameObject.tag)
         {
