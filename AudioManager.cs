@@ -84,7 +84,9 @@ public class AudioManager : MonoBehaviour
     /// <param name="volume">Volume.</param>
     public void SetFXVolume(float volume)
 	{
-		mainAudioMixer.SetFloat("FX", volume);
+		//since we can't take the logarithm of 0, we need to change the value slightly when we're near 0
+		float nonZeroVolume = Mathf.Max(volume, 0.0001f);
+		mainAudioMixer.SetFloat("SoundVolume", Mathf.Log10(nonZeroVolume)*20);
 	}
 
 	/// <summary>
@@ -93,6 +95,8 @@ public class AudioManager : MonoBehaviour
 	/// <param name="volume">Volume.</param>
 	public void SetMusicVolume(float volume)
 	{
-		mainAudioMixer.SetFloat("Music", volume);
+		//since we can't take the logarithm of 0, we need to change the value slightly when we're near 0
+        	float nonZeroVolume = Mathf.Max(volume, 0.0001f);
+        	mainAudioMixer.SetFloat("MusicVolume", Mathf.Log10(nonZeroVolume)*20);
 	}
 }
