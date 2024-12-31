@@ -7,10 +7,10 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
     public Sound[] music;
-	[SerializeField] AudioMixer mainAudioMixer;
-	public static AudioManager instance;
+    [SerializeField] AudioMixer mainAudioMixer;
+    public static AudioManager instance;
 	
-	[SerializeField] private bool playMusic; //Whether we should play background music or not when the level starts
+    [SerializeField] private bool playMusic; //Whether we should play background music or not when the level starts
 
     void Awake()
     {
@@ -77,18 +77,18 @@ public class AudioManager : MonoBehaviour
         else
             Debug.Log("Sound with name " + name + " could not be found");
     }
-
-    /// <summary>
-    /// Sets the FX volume.
-    /// </summary>
-    /// <param name="volume">Volume.</param>
-    public void SetFXVolume(float volume)
+	
+	/// <summary>
+	/// Sets the FX volume.
+	/// </summary>
+	/// <param name="volume">Volume.</param>
+	public void SetFXVolume(float volume)
 	{
 		//since we can't take the logarithm of 0, we need to change the value slightly when we're near 0
 		float nonZeroVolume = Mathf.Max(volume, 0.0001f);
 		mainAudioMixer.SetFloat("SoundVolume", Mathf.Log10(nonZeroVolume)*20);
 	}
-
+	
 	/// <summary>
 	/// Sets the music volume.
 	/// </summary>
@@ -96,7 +96,7 @@ public class AudioManager : MonoBehaviour
 	public void SetMusicVolume(float volume)
 	{
 		//since we can't take the logarithm of 0, we need to change the value slightly when we're near 0
-        	float nonZeroVolume = Mathf.Max(volume, 0.0001f);
-        	mainAudioMixer.SetFloat("MusicVolume", Mathf.Log10(nonZeroVolume)*20);
+		float nonZeroVolume = Mathf.Max(volume, 0.0001f);
+		mainAudioMixer.SetFloat("MusicVolume", Mathf.Log10(nonZeroVolume)*20);
 	}
 }
