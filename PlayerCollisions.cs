@@ -39,7 +39,7 @@ namespace Player
                     HealthPickUp healthPickUp = col.gameObject.GetComponent<HealthPickUp>();
                     playerStats.ChangeHp(healthPickUp.healAmount);
                     Destroy(col.gameObject);
-                    AudioManager.instance.Play(Sound.HealthPickUp);
+                    AudioManager.Instance.Play(Sound.HealthPickUp);
                     // TODO: Add graphical effects
                     break;
 
