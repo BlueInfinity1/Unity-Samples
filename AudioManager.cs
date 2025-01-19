@@ -18,14 +18,14 @@ namespace AudioManagement
         [SerializeField] AudioMixer mainAudioMixer;
         [SerializeField] bool playMusic; // Whether we should play background music or not when the level starts
     
-        public static AudioManager instance;
+        public static AudioManager Instance { get; private set; }
     
         void Awake()
         {
-            if (instance == null)
+            if (Instance == null)
             {
                 DontDestroyOnLoad(gameObject);
-                instance = this;
+                Instance = this;
     
                 int index = 0;
     
