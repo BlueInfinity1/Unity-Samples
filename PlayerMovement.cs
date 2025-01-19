@@ -122,7 +122,7 @@ namespace Player
                 {
                     tempVelocity.y = initialJumpSpeed; // Making the upward motion this way                
                     activateJump = false;
-                    AudioManager.instance.Play(Sound.PlayerJump);
+                    AudioManager.Instance.Play(Sound.PlayerJump);
                 }
                 // POSSIBLE TODO: Platform games usually implement a "late jump leeway" / "coyote time", which allows the player to jump even if he's left a platform already, e.g. jump can be performed even
                 // if we touched the ground 0.1 seconds ago
@@ -137,7 +137,7 @@ namespace Player
                     bullet.velocity = bullet.speed * transform.localScale.x * Vector2.right; 
                     canShoot = false;
                     lastShotTime = Time.time;
-                    AudioManager.instance.Play(Sound.PlayerShoot);
+                    AudioManager.Instance.Play(Sound.PlayerShoot);
                 }
                 else if (!canShoot && Time.time - lastShotTime >= shotReloadTime) // Check if we can fire again                
                     canShoot = true;
@@ -157,7 +157,7 @@ namespace Player
             RB.velocity = Vector2.zero;
             float knockbackVelocity = 200f;
     
-            AudioManager.instance.Play(Sound.PlayerHurt);
+            AudioManager.Instance.Play(Sound.PlayerHurt);
     
             RB.AddForce(knockbackVelocity * transform.localScale.x * Vector2.left); // Push the player to the opposite of his facing direction
             //TODO: Other effects if required
@@ -172,10 +172,10 @@ namespace Player
             RB.velocity = Vector2.zero;
             RB.isKinematic = true;
             float waitTimeBeforeRestart = 3.0f;
-            AudioManager.instance.Play(Sound.PlayerHurt); //TODO: Dying sound
+            AudioManager.Instance.Play(Sound.PlayerHurt); //TODO: Dying sound
     
             yield return new WaitForSeconds(waitTimeBeforeRestart);
-            LevelController.instance.RestartLevel();        
+            LevelController.Instance.RestartLevel();        
         }
     
         IEnumerator HandlingInputs()
